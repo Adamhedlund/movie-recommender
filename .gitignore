@@ -6,8 +6,12 @@ dist/
 wheels/
 *.egg-info
 
+# Dataset
+data/
+
 # Virtual environments
 .venv
+venv/
 # Python
 __pycache__/
 *.pyc
