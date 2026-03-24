@@ -1,5 +1,5 @@
  # Movie Recommender System
-A content-based movie recommendation system.
+A content-based movie recommendation system. 
 
 ## The project uses the MovieLens dataset:
 - movies.csv
@@ -7,23 +7,25 @@ A content-based movie recommendation system.
 - tags.csv
 
 ## Structure
-├── app.py
-├── data
-│   ├── links.csv
-│   ├── movies.csv
-│   ├── ratings.csv
-│   ├── README.txt
-│   └── tags.csv
-├── __pycache__
-│   └── recommender.cpython-311.pyc
-├── pyproject.toml
-├── Rapport.ipynb
-├── README.md
-├── recommender.py
-└── uv.lock
 
+```bash
+.
+├── app.py                  # Streamlit app
+├── data                    # Dataset
+│   ├── links.csv
+│   ├── movies.csv
+│   ├── ratings.csv
+│   ├── README.txt
+│   └── tags.csv
+├── movie_recommender.ipynb # Analysis
+├── pyproject.toml
+├── README.md
+├── recommender.py          # Recommender code
+└── uv.lock
+``` 
 ## Installation
 * Clone repository and install dependencies using uv:
+
 uv sync
 
 ## Usage
@@ -32,8 +34,12 @@ run streamlit app.py
 
 
 ## Example
-Input: "Toy Story"
+Input: 
+
+"Toy Story"
+
 Output: 
+
 1. Toy Story 2 (1999)
 Genres: Adventure|Animation|Children|Comedy|Fantasy
 
