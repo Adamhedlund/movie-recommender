@@ -1,29 +1,37 @@
-import pandas as pd
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.neighbors import NearestNeighbors
+import streamlit as st
+from recommender import build_recommender, recommend
 
-movies = pd.read_csv("./data/movies.csv")
-ratings = pd.read_csv("./data/ratings.csv")
+st.set_page_config(page_title="Filmrekommendationer", page_icon="🎬")
 
 
+@st.cache_resource
+def load_model():
+    return build_recommender()
 
 
-movies["genres_clean"] = (
-    movies["genres"]
-    .str.replace("Sci-Fi", "Scifi", regex=False)
-    .str.replace("Film-Noir", "FilmNoir", regex=False)
-    .str.replace("(no genres listed)", "", regex=False)
-    .str.replace("|", " ", regex=False)
-)
+movies, tfidf_matrix, knn, indices = load_model()
 
+st.title("🎬 Filmrekommendationer")
+st.write("Skriv in en film som du gillar!")
 
-tfidf = TfidfVectorizer()
+movie_input = st.text_input("Skriv en film", placeholder="Toy Story")
 
-tfidf_maxtrix = tfidf.fit_transform(movies['genres_clean'])
+if st.button("Rekommendera"):
+    if not movie_input.strip():
+        st.warning("Skriv in en film först.")
+    else:
+        matched_title, result = recommend(movie_input, movies, tfidf_matrix, knn, indices)
 
-knn = NearestNeighbors(metric="cosine", algorithm="brute")
-knn.fit(tfidf_maxtrix)
+        if matched_title is None:
+            st.error(result)
+        else:
+            recommendations = result
 
+            st.subheader(f"Rekommendationer baserat på: {matched_title}")
 
+            for i, row in recommendations.iterrows():
+                st.markdown(
+                    f"**{i+1}. {row['title']}**  \n"
+                    f"Genres: {row['genres']}  \n"
+                )
+                st.divider()
