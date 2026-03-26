@@ -10,17 +10,19 @@ A content-based movie recommendation system.
 
 ```bash
 .
-├── app.py                  # Streamlit app
-├── data                    # Dataset
-│   ├── links.csv
-│   ├── movies.csv
-│   ├── ratings.csv
-│   ├── README.txt
-│   └── tags.csv
-├── movie_recommender.ipynb # Analysis
+├── app.py                      # Streamlit app
+├── data                        # Data (not included)
+│   ├── links.csv
+│   ├── movies.csv
+│   ├── ratings.csv
+│   ├── README.txt
+│   └── tags.csv
+├── images
+│   └── app.png                 # Screenshot
+├── movie_recommender.ipynb     # Analysis
 ├── pyproject.toml
 ├── README.md
-├── recommender.py          # Recommender code
+├── recommender.py              # Code function
 └── uv.lock
 ``` 
 ## Installation
@@ -30,7 +32,7 @@ uv sync
 
 ## Usage
 To start streamlit app on localhost:
-run streamlit app.py
+streamlit run app.py
 
 
 ## Example
@@ -38,21 +40,8 @@ Input:
 
 "Toy Story"
 
-Output: 
+## Output: 
+![App Screenshot](/images/app.png)
 
-1. Toy Story 2 (1999)
-Genres: Adventure|Animation|Children|Comedy|Fantasy
-
-2. Toy Story 3 (2010)
-Genres: Adventure|Animation|Children|Comedy|Fantasy|IMAX
-
-3. Monsters, Inc. (2001)
-Genres: Adventure|Animation|Children|Comedy|Fantasy
-
-4. Bug's Life, A (1998)
-Genres: Adventure|Animation|Children|Comedy
-
-5. Finding Dory (2016)
-Genres: Adventure|Animation|Comedy
 
 ### Adam Hedlund AIM25G
